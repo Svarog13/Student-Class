@@ -1,0 +1,126 @@
+#include <iostream>
+
+struct PID
+{
+    std::string Name;
+    std::string Surname;
+    std::string SecondName;
+};
+
+struct DataOfBirth
+{
+    int day;
+    int month;
+    int year;
+};
+
+class Student
+{
+private:
+    PID pid;
+    DataOfBirth DataOfBirth;
+    long long PhoneNumber;
+    std::string City;
+    std::string Country;
+    std::string NameUniverse;
+    std::string CityLocationOfUniverse;
+    std::string CountryLocationOfUniverse;
+    std::string NumberOfGroup;
+
+public:
+    Student(std::string name, std::string surname, std::string secondName)
+    {
+        this->pid.Name = name;
+        this->pid.Surname = surname;
+        this->pid.SecondName = secondName;
+    }
+
+    Student(int day, int month, int year)
+    {
+        this->DataOfBirth.day = day;
+        this->DataOfBirth.month = month;
+        this->DataOfBirth.year = year;
+    }
+
+    void initPID()
+    {
+        std::cout << "Enter name: ";
+        std::cin >> pid.Name;
+        std::cout << "Enter Surname: ";
+        std::cin >> pid.Surname;
+        std::cout << "Enter SecondName: ";
+        std::cin >> pid.SecondName;
+    }
+
+    void setLocation(std::string city, std::string country)
+    {
+        this->City = city;
+        this->Country = country;
+    }
+
+    void setUniversityInformation(std::string nameUniverse, std::string cityLocationOfUniverse, std::string countryLocationOfUniverse)
+    {
+        this->NameUniverse = nameUniverse;
+        this->CityLocationOfUniverse = cityLocationOfUniverse;
+        this->CountryLocationOfUniverse = countryLocationOfUniverse;
+    }
+
+    void setPhoneNumber()
+    {
+        std::cout << "Enter phone number: ";
+        std::cin >> PhoneNumber;
+    }
+
+    void setNumberOfGroup(std::string numberOfGroup)
+    {
+        this->NumberOfGroup = numberOfGroup;
+    }
+
+    long long getPhoneNumber()
+    {
+        return PhoneNumber;
+    }
+
+    std::string getCity()
+    {
+        return City;
+    }
+
+    std::string getCountry()
+    {
+        return Country;
+    }
+
+    std::string getUniversityLocation()
+    {
+        return NameUniverse + ", " + CityLocationOfUniverse + ", " + CountryLocationOfUniverse;
+    }
+
+    std::string getNumberOfGroup()
+    {
+        return NumberOfGroup;
+    }
+};
+
+int main()
+{
+    Student student("Valera", "Pablo", "Semen");
+
+    student.initPID();
+    student.setUniversityInformation("RDGu", "Rivne", "Ukraine");
+    student.setLocation("Rivne", "Ukraine");
+    student.setPhoneNumber();
+    student.setNumberOfGroup("NBP212");
+
+    long long phoneNumber = student.getPhoneNumber();
+    std::string city = student.getCity();
+    std::string country = student.getCountry();
+    std::string locationOfUniversity = student.getUniversityLocation();
+
+    std::cout << "Phone number: " << phoneNumber << std::endl;
+    std::cout << "City: " << city << std::endl;
+    std::cout << "Country: " << country << std::endl;
+    std::cout << "Location of University: " << locationOfUniversity << std::endl;
+
+    return 0;
+}
